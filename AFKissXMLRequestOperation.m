@@ -1,3 +1,6 @@
+
+
+
 // AFKissXMLRequestOperation.m
 //
 // Copyright (c) 2011 Mattt Thompson (http://mattt.me/)
@@ -63,6 +66,10 @@ static dispatch_queue_t kissxml_request_operation_processing_queue() {
 - (DDXMLDocument *)responseXMLDocument {
     if (!_responseXMLDocument && [self isFinished] && [self.responseData length] > 0) {
         NSError *error = nil;
+		
+		NSString *dataString = [[NSString alloc] initWithData:self.responseData encoding:NSASCIIStringEncoding];
+		NSData *tmpData = [dataString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+		
         self.responseXMLDocument = [[DDXMLDocument alloc] initWithData:self.responseData options:0 error:&error];
         self.XMLError = error;
     }
