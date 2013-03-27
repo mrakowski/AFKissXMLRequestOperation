@@ -70,7 +70,7 @@ static dispatch_queue_t kissxml_request_operation_processing_queue() {
 		NSString *dataString = [[NSString alloc] initWithData:self.responseData encoding:NSASCIIStringEncoding];
 		NSData *tmpData = [dataString dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
 		
-        self.responseXMLDocument = [[DDXMLDocument alloc] initWithData:self.responseData options:0 error:&error];
+        self.responseXMLDocument = [[DDXMLDocument alloc] initWithData:tmpData options:0 error:&error];
         self.XMLError = error;
     }
     
